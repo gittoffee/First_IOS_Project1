@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FeedViewController: UIViewController
+class SaveFeedViewController: UIViewController
 {
-
-    @IBOutlet weak var tableview: UITableView!
-  
+    
+    @IBOutlet var tableview: UITableView!
+    
     var newsArray:[News] = []
     
     override func viewDidLoad()
@@ -20,14 +20,14 @@ class FeedViewController: UIViewController
         super.viewDidLoad()
         setupTableView()
         setupTableViewDummyData()
-     }
+    }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func setupTableView()
     {
         self.tableview.register(UINib(nibName: "FeedTableViewCell",bundle: nil),forCellReuseIdentifier: "FeedTableViewCell")  //นำ Identifier ของ Cell มาแสดง
@@ -41,18 +41,18 @@ class FeedViewController: UIViewController
         let news4:News = News(title: "Learn English", description: "Learn English", iconImage: #imageLiteral(resourceName: "iPhone-Icon-60"), author: "Dog", views: 5, createdate: "04/06/60", category: "Language")
         let news5:News = News(title: "Yahoo", description: "Yahoo", iconImage: #imageLiteral(resourceName: "github_512"), author: "yahoo", views: 6, createdate: "05/06/60", category: "Novel")
         let news6:News = News(title: "Cake", description: "Cake", iconImage: #imageLiteral(resourceName: "cheese_flat"), author: "cake", views: 7, createdate: "06/06/60", category: "Food")
-
+        
         newsArray.append(news)
         newsArray.append(news2)
         newsArray.append(news3)
         newsArray.append(news4)
         newsArray.append(news5)
         newsArray.append(news6)
-
+        
     }
 }
 
-extension FeedViewController:UITableViewDataSource,UITableViewDelegate
+extension SaveFeedViewController:UITableViewDataSource,UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100    //กำหนดความสูง
@@ -71,24 +71,24 @@ extension FeedViewController:UITableViewDataSource,UITableViewDelegate
         cell.setupUI(news: news)
         
         //เรียก Object มากจาก Class News (เปลี่ยนข้อมูลใน Cell ต่างๆ )
-//        cell.iconimgview.image = news.iconImage
-//        cell.titlelabel.text = news.title
-//        cell.descriptionlabel.text = news.description
-//        cell.accessorylabel.text = "\(news.author). \(news.views) views. \(news.createdate)"
+        //        cell.iconimgview.image = news.iconImage
+        //        cell.titlelabel.text = news.title
+        //        cell.descriptionlabel.text = news.description
+        //        cell.accessorylabel.text = "\(news.author). \(news.views) views. \(news.createdate)"
         
         return cell   //กำหนด cell ที่จะนำมาแสดง
     }
     
     
     
-//    func toFeedDetailsViewController(news:News){
-//        if let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FeedDetailsViewController") as? FeedDetailsViewController
-//        {
-//        ViewController.news = news
-//        self.navigationController?.pushViewController(ViewController, animated: true)
-//        }
-//    
-//    }
+    //    func toFeedDetailsViewController(news:News){
+    //        if let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FeedDetailsViewController") as? FeedDetailsViewController
+    //        {
+    //        ViewController.news = news
+    //        self.navigationController?.pushViewController(ViewController, animated: true)
+    //        }
+    //    
+    //    }
     
     
     
